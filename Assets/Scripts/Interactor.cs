@@ -20,22 +20,34 @@ public class Interactor : MonoBehaviour
     }
     private void Update()
     {
-
+        //ITEM INTERACTION
         if (Physics.Raycast(orientation.position, orientation.forward, out RaycastHit hit, interactionRange))
         {
-                if (hit.transform.TryGetComponent(out Item item))
-                {
-                    interactionText.gameObject.SetActive(true);
-                    interactionText.text = ("Press F to pick up");
+            if (hit.transform.TryGetComponent(out Item item))
+            {
+                interactionText.gameObject.SetActive(true);
+                interactionText.text = ("Press F to pick up");
 
-                    if (Input.GetButtonDown("Interaction"))
-                    {
-                        Debug.Log("interact");
-                        item.GetComponent<Item>().Interact();
-                    }
+                if (Input.GetButtonDown("Interaction"))
+                {
+                    Debug.Log("interact");
+                    item.GetComponent<Item>().Interact();
                 }
             }
-            else
-                interactionText.gameObject.SetActive(false);
+
+            else if (hit.transform.parent.TryGetComponent(out TheGatherer gatherer))
+            {
+                interactionText.gameObject.SetActive(true);
+                interactionText.text = ("Press F to get items");
+
+                if (Input.GetButtonDown("Interaction"))
+                {
+                    Debug.Log("interact");
+                    gatherer.GetComponent<TheGatherer>().Interact();
+                }
+            }
+        }
+        else
+            interactionText.gameObject.SetActive(false);
     }
 }
