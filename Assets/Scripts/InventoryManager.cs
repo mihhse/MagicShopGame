@@ -10,14 +10,14 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private float selectedSlot = 0;
     [SerializeField] private float itemSlotMax;
 
-    public void AddItem(string itemName, int quantity, Sprite itemSprite)
+    public void AddItem(string itemName, int quantity, Sprite itemSprite, string primaryType, string secondaryType)
     {
         Debug.Log("Picked Up");
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if (itemSlot[i].isFull == false)
             {
-                itemSlot[i].AddItem(itemName, quantity, itemSprite);
+                itemSlot[i].AddItem(itemName, quantity, itemSprite, primaryType, secondaryType);
                 return;
             }
         }

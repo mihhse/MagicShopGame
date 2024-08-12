@@ -8,6 +8,8 @@ public class Item : MonoBehaviour
     [SerializeField] private string itemName;
     [SerializeField] private int quantity;
     [SerializeField] private Sprite itemSprite;
+    [SerializeField] private string primaryType;
+    [SerializeField] private string secondoryType;
 
     private InventoryManager inventoryManager;
 
@@ -23,7 +25,7 @@ public class Item : MonoBehaviour
 
     internal void Interact()
     {
-        inventoryManager.AddItem(itemName, quantity, itemSprite);
+        inventoryManager.AddItem(itemName, quantity, itemSprite, primaryType, secondoryType);
         Destroy(gameObject);
     }
 }

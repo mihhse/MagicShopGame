@@ -2009,7 +2009,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4840310708482505166, guid: 38f81879dd309b64da91be9ac5fd391a, type: 3}
       propertyPath: m_Name
-      value: Wood
+      value: Oak Wood
       objectReference: {fileID: 0}
     - target: {fileID: 5217398578165457780, guid: 38f81879dd309b64da91be9ac5fd391a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2106,7 +2106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5758012576079955472, guid: 10424f1d94a0c114b92e7960b9e5792e, type: 3}
       propertyPath: m_Name
-      value: MetalBar
+      value: Iron Bar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
