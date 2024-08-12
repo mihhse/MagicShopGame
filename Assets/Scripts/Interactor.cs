@@ -37,15 +37,20 @@ public class Interactor : MonoBehaviour
 
             else if (hit.transform.parent.TryGetComponent(out TheGatherer gatherer))
             {
-                interactionText.gameObject.SetActive(true);
-                interactionText.text = ("Press F to get items");
-
-                if (Input.GetButtonDown("Interaction"))
+                if (!gatherer.GetComponent<TheGatherer>().tableOccupied)
                 {
-                    Debug.Log("interact");
-                    gatherer.GetComponent<TheGatherer>().Interact();
+                    interactionText.gameObject.SetActive(true);
+                    interactionText.text = ("Press F to get items");
+
+                    if (Input.GetButtonDown("Interaction"))
+                    {
+                        Debug.Log("interact");
+                        gatherer.GetComponent<TheGatherer>().Interact();
+                    }
                 }
             }
+            else
+                interactionText.gameObject.SetActive(false);
         }
         else
             interactionText.gameObject.SetActive(false);

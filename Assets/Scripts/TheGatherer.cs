@@ -7,7 +7,7 @@ public class TheGatherer : MonoBehaviour
     [SerializeField] private Transform[] itemSpawnLocations;
     [SerializeField] private GameObject[] itemsToSpawn;
     [SerializeField] private GameObject rotationReference;
-    private bool tableOccupied = false;
+    [HideInInspector] public bool tableOccupied = false;
     [SerializeField] private float waitForNewPatch;
     [SerializeField] private GameObject environment;
 
