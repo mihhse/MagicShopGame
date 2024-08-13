@@ -36,6 +36,19 @@ public class Interactor : MonoBehaviour
                 }
             }
 
+            // CRAFTED ITEM
+            else if (hit.transform.TryGetComponent(out CraftedItem craftedItem))
+            {
+                interactionText.gameObject.SetActive(true);
+                interactionText.text = ("Press F to pick up");
+
+                if (Input.GetButtonDown("Interaction"))
+                {
+                    Debug.Log("interact");
+                    craftedItem.GetComponent<CraftedItem>().Interact();
+                }
+            }
+
             // CRAFTING TABLE
             else if (hit.transform.parent.TryGetComponent(out CraftingTable table))
             {

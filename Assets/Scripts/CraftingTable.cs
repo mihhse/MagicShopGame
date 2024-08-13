@@ -23,7 +23,7 @@ public class CraftingTable : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Cursor.visible = true;
+        cursor.SetActive(true);
     }
 
     public void Craft()

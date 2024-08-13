@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup;
+    public Image DDimage;
+    public string DDingredientType;
 
 
-    Transform parentAfterDrag;
+    [HideInInspector] public Transform parentAfterDrag;
 
     private void Awake()
     {
@@ -21,9 +24,12 @@ public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHa
     {
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
+        GetComponent<DragDrop>().DDingredientType = GetComponentInParent<ItemSlot>().itemSlotIngredientTypeString;
+        GetComponent<DragDrop>().DDingredientType = GetComponentInParent<CraftingItemSlot>().itemSlotIngredientTypeString;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
+        DDimage.raycastTarget = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -35,6 +41,7 @@ public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHa
     {
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
-        parentAfterDrag.SetParent(parentAfterDrag);
+        transform.SetParent(parentAfterDrag);
+        DDimage.raycastTarget = true;
     }
 }

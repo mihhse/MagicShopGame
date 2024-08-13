@@ -74,6 +74,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f94dafb3593f7db4ba6b6f3da6873d55, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5877192179903619044}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f94dafb3593f7db4ba6b6f3da6873d55, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6453535974539073240}
   m_SourcePrefab: {fileID: 100100000, guid: f94dafb3593f7db4ba6b6f3da6873d55, type: 3}
 --- !u!1 &2727134600302347144 stripped
 GameObject:
@@ -94,8 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Earth Crystal
   itemSprite: {fileID: 21300000, guid: 32748a7b2f852cf4b82f216b9429193a, type: 3}
-  primaryType: Crystal
-  secondoryType: Earth
+  ingredientType: 3
 --- !u!65 &5877192179903619044
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -117,3 +119,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.021638421, y: 0.016790124, z: 0.016790124}
   m_Center: {x: -0.0004738951, y: -0.0000000013969835, z: 0.008660168}
+--- !u!54 &6453535974539073240
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727134600302347144}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

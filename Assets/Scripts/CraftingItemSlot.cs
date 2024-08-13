@@ -9,6 +9,9 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private string itemName;
     [SerializeField] Sprite itemSprite;
+    [SerializeField] public string itemSlotIngredientTypeString;
+
+    public ExpectedIngredient expectedIngredient = new ExpectedIngredient();
 
     [HideInInspector] public bool isFull;
 
@@ -24,8 +27,25 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            Debug.Log("Dropped");
-            eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+                GameObject dropped = eventData.pointerDrag;
+                DragDrop dragDrop = dropped.GetComponent<DragDrop>();
+                dragDrop.parentAfterDrag = transform;
+                Debug.Log("Dropped");
+                eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+
+            if (dropped.GetComponent<DragDrop>().DDingredientType == expectedIngredient.ToString())
+            {
+                Debug.Log("Recipe inserted");
+            }
         }
     }
+
+    public enum ExpectedIngredient
+    {
+        None,
+        Wood,
+        Metal,
+        Crystal,
+        Recipe
+    };
 }

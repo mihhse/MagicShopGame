@@ -78,10 +78,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 51002ca8724023f459963116417431ac, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 4175928443897636456}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 51002ca8724023f459963116417431ac, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 6260135368286097968}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 51002ca8724023f459963116417431ac, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4175928443897636456}
+      addedObject: {fileID: 4160106534330309580}
   m_SourcePrefab: {fileID: 100100000, guid: 51002ca8724023f459963116417431ac, type: 3}
 --- !u!1 &2011474784539365873 stripped
 GameObject:
@@ -93,6 +96,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 51002ca8724023f459963116417431ac, type: 3}
   m_PrefabInstance: {fileID: 8225393192196816142}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4175928443897636456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144310926785347679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95bccd88926446642933759142860b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Dagger
+  itemSprite: {fileID: 21300000, guid: 89af8529e6c39c34da131a865a541bc8, type: 3}
+  craftedItemMaterialSlots:
+  - {fileID: 0}
+  craftedItemOptionalParts:
+  - {fileID: 2011474784539365873}
 --- !u!65 &6260135368286097968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,23 +135,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2852689, y: 0.14478004, z: 0.4029865}
   m_Center: {x: -0.17532259, y: 0.0006543994, z: 0}
---- !u!114 &4175928443897636456
-MonoBehaviour:
+--- !u!54 &4160106534330309580
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9144310926785347679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95bccd88926446642933759142860b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: Dagger
-  quantity: 1
-  itemSprite: {fileID: 0}
-  primaryType: Dagger
-  secondoryType: 
-  craftedItemMaterialSlots: []
-  craftedItemOptionalParts:
-  - {fileID: 2011474784539365873}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
