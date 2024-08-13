@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6923635
+      value: -0.857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9191134
+      value: 2.067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.0091267
+      value: 3.145
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.4958707
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_LocalRotation.x
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.8683964
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_LocalRotation.z
@@ -42,15 +42,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -120.546
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: 51002ca8724023f459963116417431ac, type: 3}
+      propertyPath: m_Name
+      value: Blade
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: 51002ca8724023f459963116417431ac, type: 3}
+      propertyPath: m_Name
+      value: HandleTop
+      objectReference: {fileID: 0}
+    - target: {fileID: -1599826595754709761, guid: 51002ca8724023f459963116417431ac, type: 3}
+      propertyPath: m_Name
+      value: Crystal
+      objectReference: {fileID: 0}
+    - target: {fileID: -1599826595754709761, guid: 51002ca8724023f459963116417431ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_Name
       value: Dagger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: 51002ca8724023f459963116417431ac, type: 3}
+      propertyPath: m_Name
+      value: Handle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61,8 +81,13 @@ PrefabInstance:
       addedObject: {fileID: 6260135368286097968}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 51002ca8724023f459963116417431ac, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1566819078521627131}
+      addedObject: {fileID: 4175928443897636456}
   m_SourcePrefab: {fileID: 100100000, guid: 51002ca8724023f459963116417431ac, type: 3}
+--- !u!1 &2011474784539365873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1599826595754709761, guid: 51002ca8724023f459963116417431ac, type: 3}
+  m_PrefabInstance: {fileID: 8225393192196816142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9144310926785347679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 51002ca8724023f459963116417431ac, type: 3}
@@ -87,9 +112,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1566819078521627131
+  m_Size: {x: 1.2852689, y: 0.14478004, z: 0.4029865}
+  m_Center: {x: -0.17532259, y: 0.0006543994, z: 0}
+--- !u!114 &4175928443897636456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,7 +123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9144310926785347679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89cc8c5cbc3600c4493fa059ce6287f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 95bccd88926446642933759142860b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Dagger
@@ -106,3 +131,6 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   primaryType: Dagger
   secondoryType: 
+  craftedItemMaterialSlots: []
+  craftedItemOptionalParts:
+  - {fileID: 2011474784539365873}

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -10,14 +11,16 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private float selectedSlot = 0;
     [SerializeField] private float itemSlotMax;
 
-    public void AddItem(string itemName, int quantity, Sprite itemSprite, string primaryType, string secondaryType)
+    private Color32 itemSlotColor = new Color32(255,255,255,150);
+
+    public void AddItem(string itemName, Sprite itemSprite)
     {
         Debug.Log("Picked Up");
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if (itemSlot[i].isFull == false)
             {
-                itemSlot[i].AddItem(itemName, quantity, itemSprite, primaryType, secondaryType);
+                itemSlot[i].AddItem(itemName, itemSprite);
                 return;
             }
         }
@@ -58,7 +61,7 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < itemSlot.Length; i++)
         {
             itemSlot[i].itemSlotIsSelected = false;
-            itemSlot[i].selectedSlot.SetActive(false);
+            itemSlot[i].GetComponent<Image>().color = itemSlotColor;
         }
     }
 }

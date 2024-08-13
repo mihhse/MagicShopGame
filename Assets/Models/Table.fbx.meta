@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 51002ca8724023f459963116417431ac
+guid: b0fc819e038131c428f844d4efbb9089
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,23 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Crystal
-    second: {fileID: 2100000, guid: d419778074bf8b340b55123b3cee9402, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Iron
-    second: {fileID: 2100000, guid: f2ec24b063b70fe449f575a23f4c2b0a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: f2ec24b063b70fe449f575a23f4c2b0a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wood
-    second: {fileID: 2100000, guid: 0fcfdba4465e33540a5c97dbc284fd6c, type: 2}
+      name: Table
+    second: {fileID: 2100000, guid: 81ebbaa0a2649af40a1b29f1453ed545, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

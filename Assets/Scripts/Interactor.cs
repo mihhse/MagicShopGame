@@ -20,9 +20,10 @@ public class Interactor : MonoBehaviour
     }
     private void Update()
     {
-        //ITEM INTERACTION
+        //INTERACTION
         if (Physics.Raycast(orientation.position, orientation.forward, out RaycastHit hit, interactionRange))
         {
+            // ITEM
             if (hit.transform.TryGetComponent(out Item item))
             {
                 interactionText.gameObject.SetActive(true);
@@ -35,6 +36,20 @@ public class Interactor : MonoBehaviour
                 }
             }
 
+            // CRAFTING TABLE
+            else if (hit.transform.parent.TryGetComponent(out CraftingTable table))
+            {
+                    interactionText.gameObject.SetActive(true);
+                    interactionText.text = ("Press F to craft");
+
+                    if (Input.GetButtonDown("Interaction"))
+                    {
+                        Debug.Log("interact");
+                        table.GetComponent<CraftingTable>().Interact();
+                    }
+            }
+
+            // GATHERER
             else if (hit.transform.parent.TryGetComponent(out TheGatherer gatherer))
             {
                 if (!gatherer.GetComponent<TheGatherer>().tableOccupied)
