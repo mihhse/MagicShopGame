@@ -27,17 +27,30 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-                GameObject dropped = eventData.pointerDrag;
-                DragDrop dragDrop = dropped.GetComponent<DragDrop>();
+                GameObject dropped = eventData.pointerDrag; // new item slot
+                DragDrop dragDrop = dropped.GetComponent<DragDrop>(); // dropped image's drag drop component
+                ItemSlot ogSlotInfo = dragDrop.originalItemSlot.GetComponent<ItemSlot>(); // og item slot
                 dragDrop.parentAfterDrag = transform;
                 Debug.Log("Dropped");
                 eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-            if (dropped.GetComponent<DragDrop>().DDingredientType == expectedIngredient.ToString())
+
+
+            if (dragDrop.DDingredientType == expectedIngredient.ToString())
             {
                 Debug.Log("Recipe inserted");
             }
         }
+    }
+
+    public void AddItem(string itemName, Sprite itemSprite, string ingredientTypeString)
+    {
+        this.itemName = itemName;
+        this.itemSprite = itemSprite;
+        isFull = true;
+        this.itemSlotIngredientTypeString = ingredientTypeString;
+
+        itemImage.sprite = itemSprite;
     }
 
     public enum ExpectedIngredient

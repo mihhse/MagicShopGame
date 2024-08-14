@@ -52,6 +52,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         {
             GameObject dropped = eventData.pointerDrag;
             DragDrop dragDrop = dropped.GetComponent<DragDrop>();
+
+            //to do add the objext info to the new item slot and clear the old one
+
+
             dragDrop.parentAfterDrag = transform;
             Debug.Log("Dropped");
             eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
@@ -61,7 +65,13 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     private void EmptySlot()
     {
+        itemName = null;
+        itemSprite = null;
+        isFull = false;
+        itemSlotIngredientTypeString = null;
+
         itemImage.sprite = null;
+
         itemImage.gameObject.SetActive(false);
     }
 }

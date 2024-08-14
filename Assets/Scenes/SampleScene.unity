@@ -1019,6 +1019,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 326893004}
   m_SourcePrefab: {fileID: 100100000, guid: b0fc819e038131c428f844d4efbb9089, type: 3}
+--- !u!1 &380308461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7516152399689496522, guid: 10fd2653e1c3554409336027888e740b, type: 3}
+  m_PrefabInstance: {fileID: 1536802113643902617}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &391539254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06cfbda278534c4a972f880496b66a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientPanel: {fileID: 1857185159}
+  ingredientSlot: {fileID: 380308461}
+  recipeNameText: {fileID: 1773922103}
 --- !u!4 &461450693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8676882162061642789, guid: 7fbb7cf211a88cd4ea244b4332ccb68a, type: 3}
@@ -2463,6 +2471,7 @@ MonoBehaviour:
   - {fileID: 68705980}
   - {fileID: 487523405}
   - {fileID: 1561580414}
+  craftingItemSlot: {fileID: 0}
   selectedSlot: 0
   itemSlotMax: 6
 --- !u!114 &1325387444

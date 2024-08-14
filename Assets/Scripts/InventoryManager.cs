@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
 {
 
     public ItemSlot[] itemSlot;
+    public CraftingItemSlot craftingItemSlot;
     [SerializeField] private float selectedSlot = 0;
     [SerializeField] private float itemSlotMax;
 
@@ -23,6 +24,14 @@ public class InventoryManager : MonoBehaviour
                 itemSlot[i].AddItem(itemName, itemSprite, ingredientTypeString);
                 return;
             }
+        }
+    }
+
+    public void AddItemToCraftingItemSlot(string itemName, Sprite itemSprite, string ingredientTypeString)
+    {
+        if (craftingItemSlot.isFull == false)
+        {
+            craftingItemSlot.AddItem(itemName, itemSprite, ingredientTypeString);
         }
     }
 

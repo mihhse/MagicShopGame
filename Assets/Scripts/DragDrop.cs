@@ -13,6 +13,9 @@ public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHa
     public string DDingredientType;
 
 
+    public GameObject originalItemSlot;
+
+
     [HideInInspector] public Transform parentAfterDrag;
 
     private void Awake()
@@ -22,10 +25,17 @@ public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHa
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        //visuals
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
-        GetComponent<DragDrop>().DDingredientType = GetComponentInParent<ItemSlot>().itemSlotIngredientTypeString;
-        GetComponent<DragDrop>().DDingredientType = GetComponentInParent<CraftingItemSlot>().itemSlotIngredientTypeString;
+
+        //get information from original item slot
+        originalItemSlot = eventData.pointerDrag.gameObject; // original item is set to game object of the item slot below
+        GetComponent<DragDrop>().DDingredientType = GetComponentInParent<ItemSlot>().itemSlotIngredientTypeString;  // get ingredient type from item
+        GetComponent<DragDrop>().DDingredientType = GetComponentInParent<CraftingItemSlot>().itemSlotIngredientTypeString;  // get ingredient type from  crafted item
+
+
+        // change parent
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -39,8 +49,11 @@ public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        //visuals
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        // change parent back to original item slot
         transform.SetParent(parentAfterDrag);
         DDimage.raycastTarget = true;
     }
