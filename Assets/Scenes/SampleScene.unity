@@ -1518,6 +1518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientPanel: {fileID: 1857185159}
   ingredientSlot: {fileID: 1986128217266623315, guid: fa0d47522fbd6be4e97af75ae52816ce, type: 3}
+  recipeSlot: {fileID: 1313096478}
   recipeNameText: {fileID: 1773922103}
   recipeSO: {fileID: 0}
 --- !u!1001 &430743287
@@ -2676,6 +2677,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5750263c2433a849902f1b697242c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1313096478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6721993116254060835, guid: 460b239fc91fa1646a68dd23e210627f, type: 3}
+  m_PrefabInstance: {fileID: 6980679832896309745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1313096479 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 479963368437118465, guid: 460b239fc91fa1646a68dd23e210627f, type: 3}

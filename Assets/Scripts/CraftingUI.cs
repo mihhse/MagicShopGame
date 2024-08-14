@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CraftingUI : MonoBehaviour
 {
-    [SerializeField] private GameObject ingredientPanel, ingredientSlot;
+    [SerializeField] private GameObject ingredientPanel, ingredientSlot, recipeSlot;
     [SerializeField] private TextMeshProUGUI recipeNameText;
     [SerializeField] private RecipeSO recipeSO;
 
@@ -43,5 +43,10 @@ public class CraftingUI : MonoBehaviour
     private void Update()
     {
         //to do if newingredient slot has more than 1 child set its expected ingredient image inactive
+        if(recipeSlot.transform.childCount < 1)
+            for (int i = 0; i < ingredientPanel.transform.childCount; i++)
+            {
+                Debug.Log("delete item slot");
+            }
     }
 }

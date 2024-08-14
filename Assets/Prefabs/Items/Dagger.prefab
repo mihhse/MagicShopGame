@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HandleTop
       objectReference: {fileID: 0}
+    - target: {fileID: -1806680513116206669, guid: 51002ca8724023f459963116417431ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b0eed7a1471c341866356a4821d667, type: 2}
     - target: {fileID: -1599826595754709761, guid: 51002ca8724023f459963116417431ac, type: 3}
       propertyPath: m_Name
       value: Crystal
@@ -114,6 +118,8 @@ MonoBehaviour:
   - {fileID: 0}
   craftedItemOptionalParts:
   - {fileID: 2011474784539365873}
+  recipeSO: {fileID: 0}
+  recipe: {fileID: 0}
 --- !u!65 &6260135368286097968
 BoxCollider:
   m_ObjectHideFlags: 0
