@@ -11,27 +11,20 @@ public class InventoryManager : MonoBehaviour
     public CraftingItemSlot craftingItemSlot;
     [SerializeField] private float selectedSlot = 0;
     [SerializeField] private float itemSlotMax;
+    [SerializeField] private Recipe debugRecipe;
 
     private Color32 itemSlotColor = new Color32(255,255,255,150);
 
-    public void AddItem(string itemName, Sprite itemSprite, string ingredientTypeString)
+    public void AddItem(string itemName, Sprite itemSprite, string ingredientTypeString, RecipeSO recipeSO)
     {
         Debug.Log("Picked Up");
         for (int i = 0; i < itemSlot.Length; i++)
         {
             if (itemSlot[i].isFull == false)
             {
-                itemSlot[i].AddItem(itemName, itemSprite, ingredientTypeString);
+                itemSlot[i].AddItem(itemName, itemSprite, ingredientTypeString, recipeSO);
                 return;
             }
-        }
-    }
-
-    public void AddItemToCraftingItemSlot(string itemName, Sprite itemSprite, string ingredientTypeString)
-    {
-        if (craftingItemSlot.isFull == false)
-        {
-            craftingItemSlot.AddItem(itemName, itemSprite, ingredientTypeString);
         }
     }
 

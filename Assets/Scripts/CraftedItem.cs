@@ -9,6 +9,9 @@ public class CraftedItem : MonoBehaviour
     [SerializeField] public MeshRenderer[] craftedItemMaterialSlots;
     [SerializeField] public GameObject[] craftedItemOptionalParts;
     private string ingredientTypeString;
+    [SerializeField] private RecipeSO recipeSO;
+
+    [SerializeField] private Recipe recipe;
 
     private InventoryManager inventoryManager;
 
@@ -24,7 +27,7 @@ public class CraftedItem : MonoBehaviour
 
     internal void Interact()
     {
-        inventoryManager.AddItem(itemName, itemSprite, ingredientTypeString);
+        inventoryManager.AddItem(itemName, itemSprite, ingredientTypeString, recipeSO);
         Destroy(gameObject);
     }
 }

@@ -6,9 +6,10 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] private string itemName;
-    [SerializeField] private Sprite itemSprite;
+    [SerializeField] public Sprite itemSprite;
     public IngredientType ingredientType = new IngredientType();
-    private string ingredientTypeString;
+    public string ingredientTypeString;
+    [SerializeField] private RecipeSO recipeSO;
 
     private InventoryManager inventoryManager;
 
@@ -27,14 +28,14 @@ public class Item : MonoBehaviour
         ingredientTypeString = ingredientType.ToString();
     }
 
-    private void Update()
+    private void Awake()
     {
-        
+        ingredientTypeString = ingredientType.ToString();
     }
 
     internal void Interact()
     {
-        inventoryManager.AddItem(itemName, itemSprite, ingredientTypeString);
+        inventoryManager.AddItem(itemName, itemSprite, ingredientTypeString, recipeSO);
         Destroy(gameObject);
     }
 }

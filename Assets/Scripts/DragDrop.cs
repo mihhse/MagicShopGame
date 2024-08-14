@@ -9,8 +9,12 @@ public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHa
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
     public CanvasGroup canvasGroup;
-    public Image DDimage;
-    public string DDingredientType;
+    [HideInInspector] public Image DDimage;
+
+    [SerializeField] private string itemName;
+    [SerializeField] private Sprite itemSprite;
+    [SerializeField] public string ingredientTypeString;
+    public RecipeSO recipeSO;
 
 
     public GameObject originalItemSlot;
@@ -22,6 +26,8 @@ public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHa
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup= GetComponent<CanvasGroup>();
+        GameObject tempcanvas = GameObject.Find("Canvas");
+        canvas = tempcanvas.GetComponent<Canvas>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -31,9 +37,8 @@ public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHa
 
         //get information from original item slot
         originalItemSlot = eventData.pointerDrag.gameObject; // original item is set to game object of the item slot below
-        GetComponent<DragDrop>().DDingredientType = GetComponentInParent<ItemSlot>().itemSlotIngredientTypeString;  // get ingredient type from item
-        GetComponent<DragDrop>().DDingredientType = GetComponentInParent<CraftingItemSlot>().itemSlotIngredientTypeString;  // get ingredient type from  crafted item
-
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
 
         // change parent
         parentAfterDrag = transform.parent;
@@ -56,5 +61,16 @@ public class DragDrop : MonoBehaviour,IBeginDragHandler,IEndDragHandler, IDragHa
         // change parent back to original item slot
         transform.SetParent(parentAfterDrag);
         DDimage.raycastTarget = true;
+    }
+
+    public void ReceiveItemData(string itemName, Sprite itemSprite, string ingredientTypeString, RecipeSO recipeSO)
+    {
+        this.itemName = itemName;
+        this.itemSprite = itemSprite;
+        this.DDimage.sprite = itemSprite;
+        this.gameObject.SetActive(true);
+        this.ingredientTypeString = ingredientTypeString;
+        this.recipeSO = recipeSO;
+        Debug.Log(this.itemName);
     }
 }

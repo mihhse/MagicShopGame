@@ -11,23 +11,30 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     // ITEM DATA
     [SerializeField] private string itemName;
     [SerializeField] Sprite itemSprite;
-    [SerializeField] public string itemSlotIngredientTypeString;
+    [SerializeField] private string ingredientTypeString;
+    [SerializeField] private RecipeSO recipeSO;
 
-    [HideInInspector] public bool isFull;
+    public bool isFull;
     public bool itemSlotIsSelected;
 
     // ITEM SLOT
-    [SerializeField] private Image itemImage;
+    [SerializeField] private GameObject ItemImage;
     private Color selectedItemSlotColor = new Color32(255, 80, 80, 150);
 
-    public void AddItem(string itemName, Sprite itemSprite, string ingredientTypeString)
+    public void AddItem(string itemName, Sprite itemSprite, string ingredientTypeString, RecipeSO recipeSO)
     {
         this.itemName = itemName;
         this.itemSprite = itemSprite;
         isFull = true;
-        this.itemSlotIngredientTypeString = ingredientTypeString;
+        this.ingredientTypeString = ingredientTypeString;
+        this.recipeSO = recipeSO;
 
-        itemImage.sprite = itemSprite;
+        GameObject itemImage = Instantiate (ItemImage);
+        itemImage.transform.SetParent(transform);
+
+        itemImage.GetComponent<Image>().sprite = itemSprite;
+        itemImage.GetComponent<DragDrop>().ReceiveItemData(itemName, itemSprite, ingredientTypeString, recipeSO);
+        EmptySlot();
     }
 
     public void SelectItemSlot()
@@ -38,23 +45,17 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     private void Update()
     {
-        if (isFull)
-        {
-            itemImage.gameObject.SetActive(true);
-        }
-        else
-            itemImage.gameObject.SetActive(false);
+        if (transform.childCount > 0)
+            isFull = true;
+        else isFull = false;
     }
 
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
         {
-            GameObject dropped = eventData.pointerDrag;
-            DragDrop dragDrop = dropped.GetComponent<DragDrop>();
-
-            //to do add the objext info to the new item slot and clear the old one
-
+            GameObject dropped = eventData.pointerDrag; // item image
+            DragDrop dragDrop = dropped.GetComponent<DragDrop>(); // dropped image's drag drop component
 
             dragDrop.parentAfterDrag = transform;
             Debug.Log("Dropped");
@@ -63,15 +64,19 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     }
 
 
-    private void EmptySlot()
+    public void EmptySlot()
     {
         itemName = null;
         itemSprite = null;
-        isFull = false;
-        itemSlotIngredientTypeString = null;
+        ingredientTypeString = null;
+        recipeSO = null;
+    }
 
-        itemImage.sprite = null;
-
-        itemImage.gameObject.SetActive(false);
+    public void ReceiveItemData(string itemName, Sprite itemSprite, string ingredientTypeString, RecipeSO recipeSO)
+    {
+        this.itemName = itemName;
+        this.itemSprite = itemSprite;
+        this.ingredientTypeString = ingredientTypeString;
+        this.recipeSO = recipeSO;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,48 +10,65 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private string itemName;
     [SerializeField] Sprite itemSprite;
-    [SerializeField] public string itemSlotIngredientTypeString;
+    [SerializeField] public string ingredientTypeString;
+    [SerializeField] private bool isRecipeSlot;
+    [SerializeField] private RecipeSO recipeSO;
+    [SerializeField] private GameObject craftingUI;
+    [SerializeField] public GameObject expectedIngredientImage;
 
     public ExpectedIngredient expectedIngredient = new ExpectedIngredient();
+    public string expectedIngredientString;
 
     [HideInInspector] public bool isFull;
 
     //REFERENCES
-    [SerializeField] private Image itemImage;
-    [SerializeField] InventoryManager inventoryManager;
-
-    private void Start()
-    {
-        inventoryManager = GameObject.Find("Canvas").GetComponent<InventoryManager>();
-    }
+    [SerializeField] private GameObject ItemImage;
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
         {
-                GameObject dropped = eventData.pointerDrag; // new item slot
+                GameObject dropped = eventData.pointerDrag; // new image
                 DragDrop dragDrop = dropped.GetComponent<DragDrop>(); // dropped image's drag drop component
-                ItemSlot ogSlotInfo = dragDrop.originalItemSlot.GetComponent<ItemSlot>(); // og item slot
+
                 dragDrop.parentAfterDrag = transform;
                 Debug.Log("Dropped");
                 eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-
-
-            if (dragDrop.DDingredientType == expectedIngredient.ToString())
-            {
-                Debug.Log("Recipe inserted");
-            }
+                if (dragDrop.ingredientTypeString.ToString() == expectedIngredientString)
+                {
+                    recipeSO = dragDrop.recipeSO;
+                    Debug.Log("Recipe inserted");
+                    craftingUI.GetComponent<CraftingUI>().RecieveCraftingRecipe(recipeSO);
+                }
         }
     }
 
-    public void AddItem(string itemName, Sprite itemSprite, string ingredientTypeString)
+    private void Start()
+    {
+        expectedIngredientString = expectedIngredient.ToString();
+    }
+    private void Update()
+    {
+        if (transform.childCount > 0)
+            isFull = true;
+        else isFull = false;
+    }
+
+    public void AddItem(string itemName, Sprite itemSprite, string ingredientTypeString, RecipeSO recipeSO)
     {
         this.itemName = itemName;
         this.itemSprite = itemSprite;
         isFull = true;
-        this.itemSlotIngredientTypeString = ingredientTypeString;
+        this.ingredientTypeString = ingredientTypeString;
+        this.recipeSO = recipeSO;
 
-        itemImage.sprite = itemSprite;
+        GameObject itemImage = Instantiate(ItemImage);
+        itemImage.transform.SetParent(transform);
+
+        itemImage.GetComponent<Image>().sprite = itemSprite;
+        itemImage.GetComponent<DragDrop>().ReceiveItemData(itemName, itemSprite, ingredientTypeString, recipeSO);
+
+        EmptySlot();
     }
 
     public enum ExpectedIngredient
@@ -61,4 +79,20 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
         Crystal,
         Recipe
     };
+
+    public void ReceiveItemData(string itemName, Sprite itemSprite, string ingredientTypeString, RecipeSO recipeSO)
+    {
+        this.itemName = itemName;
+        this.itemSprite = itemSprite;
+        this.ingredientTypeString = ingredientTypeString;
+        this.recipeSO = recipeSO;
+    }
+
+    public void EmptySlot()
+    {
+        itemName = null;
+        itemSprite = null;
+        ingredientTypeString = null;
+        recipeSO = null;
+    }
 }

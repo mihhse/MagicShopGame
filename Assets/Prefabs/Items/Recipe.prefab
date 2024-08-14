@@ -61,9 +61,6 @@ PrefabInstance:
       addedObject: {fileID: 8291840002077655553}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 109693cf0a501cd49ac876746a9cd425, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2892041135693239601}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 109693cf0a501cd49ac876746a9cd425, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 9178802575115361064}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 109693cf0a501cd49ac876746a9cd425, type: 3}
       insertIndex: -1
@@ -89,23 +86,8 @@ MonoBehaviour:
   itemName: Dagger Recipe Lvl 1
   itemSprite: {fileID: 21300000, guid: 8c3b82cf5d74b7d458ed34a9ede2590f, type: 3}
   ingredientType: 4
---- !u!114 &2892041135693239601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5989406829543381455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 081dd358c0f1ac24f897462ef5b6c038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemToCraft: {fileID: 9144310926785347679, guid: 418e0158f6c87924abfaef838b17fa03, type: 3}
-  ingredientList:
-  - {fileID: 5758012576079955472, guid: 10424f1d94a0c114b92e7960b9e5792e, type: 3}
-  - {fileID: 4840310708482505166, guid: 38f81879dd309b64da91be9ac5fd391a, type: 3}
-  optionalIngredientList: []
+  ingredientTypeString: Recipe
+  recipeSO: {fileID: 11400000, guid: 3b358b722c2f06049ad04fb2503a116f, type: 2}
 --- !u!64 &9178802575115361064
 MeshCollider:
   m_ObjectHideFlags: 0
