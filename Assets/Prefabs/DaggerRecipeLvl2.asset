@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d21c4c5726bd943aafa5349f428544, type: 3}
+  m_Name: DaggerRecipeLvl2
+  m_EditorClassIdentifier: 
+  recipeName: Dagger Recipe Level 2
+  numberOfIngredients: 2
+  Ingredients:
+  - {fileID: 4840310708482505166, guid: 38f81879dd309b64da91be9ac5fd391a, type: 3}
+  - {fileID: 5758012576079955472, guid: 10424f1d94a0c114b92e7960b9e5792e, type: 3}
+  OptionalIngredients:
+  - {fileID: 6203261379275153665, guid: fa925d86ff3f2c04ba6376075b87bb4f, type: 3}
+  - {fileID: 8296099962822579871, guid: 7fbb7cf211a88cd4ea244b4332ccb68a, type: 3}
+  - {fileID: 2727134600302347144, guid: b6fa25adc12f7df488784efa42fbf305, type: 3}
+  - {fileID: 360337879214608827, guid: 964a75fb5b0d48142a5e4dd2d9e2f179, type: 3}
+  optionalIngredientType: 

@@ -28,6 +28,15 @@ public class CraftingUI : MonoBehaviour
             newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().sprite = recipeSO.Ingredients[i].gameObject.GetComponent<Item>().itemSprite;
             newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
         }
+        if (recipeSO.OptionalIngredients != null)
+        {
+            GameObject newIngredientSlot = Instantiate(ingredientSlot);
+            newIngredientSlot.transform.SetParent(ingredientPanel.transform);
+            newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientString = recipeSO.optionalIngredientType;
+
+            newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().sprite = recipeSO.OptionalIngredients[Random.Range(0, recipeSO.OptionalIngredients.Length)].gameObject.GetComponent<Item>().itemSprite;
+            newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+        }
 
     }
 

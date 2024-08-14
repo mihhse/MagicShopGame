@@ -9,4 +9,5 @@ public class RecipeSO : ScriptableObject
     public int numberOfIngredients;
     public GameObject[] Ingredients;
     public GameObject[] OptionalIngredients;
+    public string optionalIngredientType;
 }
