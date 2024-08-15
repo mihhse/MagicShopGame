@@ -15,6 +15,8 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
     [SerializeField] private RecipeSO recipeSO;
     [SerializeField] private GameObject craftingUI;
     [SerializeField] public GameObject expectedIngredientImage;
+    [SerializeField] private GameObject ingredientImage;
+    [SerializeField] private Sprite recipeSprite;
 
     public ExpectedIngredient expectedIngredient = new ExpectedIngredient();
     public string expectedIngredientString;
@@ -49,9 +51,30 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
     }
     private void Update()
     {
-        if (transform.childCount > 0)
+        if (transform.childCount > 0) // if there is a child image - set the slot as full
             isFull = true;
         else isFull = false;
+
+        if (isRecipeSlot) // if its a recipe slot
+        {
+            if(!isFull) // if its not full
+            {
+                // add a new expected image to it
+
+                GameObject newIngredientImage = Instantiate(expectedIngredientImage);
+                newIngredientImage.transform.SetParent(transform);
+                newIngredientImage.GetComponent<Image>().sprite = recipeSprite;
+                newIngredientImage.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+            }
+        }
+
+        if (transform.childCount > 1) // if there is more than 1 image delete the first one (expected image), else make a new one
+        {
+                if (transform.GetChild(0).gameObject.CompareTag("Expected Ingredient Image"))
+                {
+                    Destroy(transform.GetChild(0).gameObject);
+                }
+        }
     }
 
     public void AddItem(string itemName, Sprite itemSprite, string ingredientTypeString, RecipeSO recipeSO)

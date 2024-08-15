@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class CraftingUI : MonoBehaviour
     [SerializeField] private GameObject ingredientPanel, ingredientSlot, recipeSlot;
     [SerializeField] private TextMeshProUGUI recipeNameText;
     [SerializeField] private RecipeSO recipeSO;
+    [SerializeField] private GameObject craftingTable;
+    [SerializeField] private List<GameObject> newIngredientsList = new List<GameObject>();
 
     public void RecieveCraftingRecipe(RecipeSO recipeSO)
     {
@@ -19,6 +22,19 @@ public class CraftingUI : MonoBehaviour
     public void UpdateCraftingRecipe()
     {
         recipeNameText.text = recipeSO.recipeName;
+        UpdateExpectedIngredientPanel();
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+            craftingTable.GetComponent<CraftingTable>().CloseCraftingUI();
+    }
+
+    void UpdateExpectedIngredientPanel()
+    {
+        ClearIngredientPanel();
+
         for (int i = 0; i < recipeSO.Ingredients.Length; i++)
         {
             GameObject newIngredientSlot = Instantiate(ingredientSlot);
@@ -27,8 +43,12 @@ public class CraftingUI : MonoBehaviour
 
             newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().sprite = recipeSO.Ingredients[i].gameObject.GetComponent<Item>().itemSprite;
             newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+
+            newIngredientsList.Add(newIngredientSlot);
+
         }
-        if (recipeSO.OptionalIngredients != null)
+
+        if (recipeSO.OptionalIngredients.Length > 0)
         {
             GameObject newIngredientSlot = Instantiate(ingredientSlot);
             newIngredientSlot.transform.SetParent(ingredientPanel.transform);
@@ -36,17 +56,17 @@ public class CraftingUI : MonoBehaviour
 
             newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().sprite = recipeSO.OptionalIngredients[Random.Range(0, recipeSO.OptionalIngredients.Length)].gameObject.GetComponent<Item>().itemSprite;
             newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+
+            newIngredientsList.Add(newIngredientSlot);
         }
-
     }
 
-    private void Update()
+    public void ClearIngredientPanel()
     {
-        //to do if newingredient slot has more than 1 child set its expected ingredient image inactive
-        if(recipeSlot.transform.childCount < 1)
-            for (int i = 0; i < ingredientPanel.transform.childCount; i++)
-            {
-                Debug.Log("delete item slot");
-            }
+        for (int i = 0; i < ingredientPanel.transform.childCount; i++) // destroys all previous expected ingredients
+        {
+            Destroy(ingredientPanel.transform.GetChild(i).gameObject);
+        }
     }
+
 }

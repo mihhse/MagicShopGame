@@ -351,6 +351,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a776e9a861e23e468cbeb517e120cbf, type: 3}
+--- !u!4 &51257569 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6365122753473479541, guid: 57ee4a68bb82b974b8bbd652d0d2d916, type: 3}
+  m_PrefabInstance: {fileID: 1390835376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &72163270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,6 +1526,8 @@ MonoBehaviour:
   recipeSlot: {fileID: 1313096478}
   recipeNameText: {fileID: 1773922103}
   recipeSO: {fileID: 0}
+  craftingTable: {fileID: 749947117}
+  newIngredientsList: []
 --- !u!1001 &430743287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2888,23 +2895,27 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2105623253}
     m_Modifications:
     - target: {fileID: 5989406829543381455, guid: 57ee4a68bb82b974b8bbd652d0d2d916, type: 3}
       propertyPath: m_Name
       value: Dagger Recipe Lvl 2
       objectReference: {fileID: 0}
     - target: {fileID: 6365122753473479541, guid: 57ee4a68bb82b974b8bbd652d0d2d916, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 12.144497
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365122753473479541, guid: 57ee4a68bb82b974b8bbd652d0d2d916, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.553517
+      value: -0.8971194
       objectReference: {fileID: 0}
     - target: {fileID: 6365122753473479541, guid: 57ee4a68bb82b974b8bbd652d0d2d916, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0611575
+      value: 2.000271
       objectReference: {fileID: 0}
     - target: {fileID: 6365122753473479541, guid: 57ee4a68bb82b974b8bbd652d0d2d916, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.9549506
+      value: 3.574176
       objectReference: {fileID: 0}
     - target: {fileID: 6365122753473479541, guid: 57ee4a68bb82b974b8bbd652d0d2d916, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4086,6 +4097,7 @@ Transform:
   - {fileID: 1267196382}
   - {fileID: 1992325416}
   - {fileID: 1827540011}
+  - {fileID: 51257569}
   m_Father: {fileID: 1389824721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2117923062
@@ -4370,9 +4382,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 413816908}
     - target: {fileID: 1589868902662636455, guid: 460b239fc91fa1646a68dd23e210627f, type: 3}
+      propertyPath: recipeSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c3b82cf5d74b7d458ed34a9ede2590f, type: 3}
+    - target: {fileID: 1589868902662636455, guid: 460b239fc91fa1646a68dd23e210627f, type: 3}
+      propertyPath: ingredientSlot
+      value: 
+      objectReference: {fileID: 1986128217266623315, guid: fa0d47522fbd6be4e97af75ae52816ce, type: 3}
+    - target: {fileID: 1589868902662636455, guid: 460b239fc91fa1646a68dd23e210627f, type: 3}
+      propertyPath: ingredientImage
+      value: 
+      objectReference: {fileID: 6349140170630782168, guid: bf21201e65435a14997f9d014e540b36, type: 3}
+    - target: {fileID: 1589868902662636455, guid: 460b239fc91fa1646a68dd23e210627f, type: 3}
       propertyPath: expectedIngredient
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1589868902662636455, guid: 460b239fc91fa1646a68dd23e210627f, type: 3}
+      propertyPath: expectedIngredientImage
+      value: 
+      objectReference: {fileID: 4229328648132135577, guid: 1d018462ec4072346a394e10a319b3de, type: 3}
     - target: {fileID: 6721993116254060835, guid: 460b239fc91fa1646a68dd23e210627f, type: 3}
       propertyPath: m_Name
       value: RecipeSlot
@@ -4769,4 +4797,3 @@ SceneRoots:
   - {fileID: 1325387447}
   - {fileID: 1389824721}
   - {fileID: 609379797}
-  - {fileID: 1390835376}
