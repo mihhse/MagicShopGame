@@ -98,6 +98,9 @@ MonoBehaviour:
   itemName: Earth Crystal
   itemSprite: {fileID: 21300000, guid: 32748a7b2f852cf4b82f216b9429193a, type: 3}
   ingredientType: 3
+  ingredientTypeString: 
+  recipeSO: {fileID: 0}
+  ingredientTypeSprite: {fileID: 21300000, guid: 4abeb19fb13f3834b9d6d90011061dc6, type: 3}
 --- !u!65 &5877192179903619044
 BoxCollider:
   m_ObjectHideFlags: 0

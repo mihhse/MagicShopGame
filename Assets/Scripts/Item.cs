@@ -11,6 +11,8 @@ public class Item : MonoBehaviour
     public string ingredientTypeString;
     [SerializeField] private RecipeSO recipeSO;
 
+    public Sprite ingredientTypeSprite;
+
     private InventoryManager inventoryManager;
 
     public enum IngredientType

@@ -8,6 +8,7 @@ public class CraftingTable : MonoBehaviour
     [SerializeField] private GameObject itemToCraft;
     [SerializeField] private GameObject spawnLocation;
     [SerializeField] private GameObject cursor;
+    [SerializeField] private RecipeSO recipeSO;
     internal void Interact()
     {
         craftingUI.SetActive(true);
@@ -28,8 +29,16 @@ public class CraftingTable : MonoBehaviour
 
     public void Craft()
     {
+
+        Debug.Log("Item Crafted");
+        itemToCraft = recipeSO.itemToCraft;
+
         GameObject craftedItem = Instantiate(itemToCraft, spawnLocation.transform.position, spawnLocation.transform.rotation);
-        craftedItem.GetComponent<CraftedItem>().craftedItemOptionalParts[0].SetActive(false);
         CloseCraftingUI();
+    }
+
+    public void ReciveItemToCraft(RecipeSO recipeSO)
+    {
+        this.recipeSO = recipeSO;
     }
 }

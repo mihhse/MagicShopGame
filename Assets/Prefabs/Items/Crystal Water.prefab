@@ -102,6 +102,9 @@ MonoBehaviour:
   itemName: Water Crystal
   itemSprite: {fileID: 21300000, guid: 0eb46b6dcc1c1054fa4485034c4807a2, type: 3}
   ingredientType: 3
+  ingredientTypeString: 
+  recipeSO: {fileID: 0}
+  ingredientTypeSprite: {fileID: 21300000, guid: 4abeb19fb13f3834b9d6d90011061dc6, type: 3}
 --- !u!65 &5275098441759900571
 BoxCollider:
   m_ObjectHideFlags: 0

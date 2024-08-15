@@ -12,6 +12,7 @@ public class CraftingUI : MonoBehaviour
     [SerializeField] private RecipeSO recipeSO;
     [SerializeField] private GameObject craftingTable;
     [SerializeField] private List<GameObject> newIngredientsList = new List<GameObject>();
+    [SerializeField] private List<bool> itemsMatching = new List<bool>();
 
     public void RecieveCraftingRecipe(RecipeSO recipeSO)
     {
@@ -23,6 +24,7 @@ public class CraftingUI : MonoBehaviour
     {
         recipeNameText.text = recipeSO.recipeName;
         UpdateExpectedIngredientPanel();
+        craftingTable.GetComponent<CraftingTable>().ReciveItemToCraft(recipeSO);
     }
 
     private void Update()
@@ -45,23 +47,29 @@ public class CraftingUI : MonoBehaviour
             newIngredientSlot.transform.SetParent(ingredientPanel.transform);
             newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientString = recipeSO.Ingredients[i].gameObject.GetComponent<Item>().ingredientTypeString;
 
-            newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().sprite = recipeSO.Ingredients[i].gameObject.GetComponent<Item>().itemSprite;
+            newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().sprite = recipeSO.Ingredients[i].gameObject.GetComponent<Item>().ingredientTypeSprite;
+
+
             newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
 
             newIngredientsList.Add(newIngredientSlot);
-
+            itemsMatching.Add(new bool());
         }
 
         if (recipeSO.OptionalIngredients.Length > 0)
         {
-            GameObject newIngredientSlot = Instantiate(ingredientSlot);
-            newIngredientSlot.transform.SetParent(ingredientPanel.transform);
-            newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientString = recipeSO.optionalIngredientType;
+            for (int i = 0; i < recipeSO.OptionalIngredients.Length; i++)
+            {
+                GameObject newIngredientSlot = Instantiate(ingredientSlot);
+                newIngredientSlot.transform.SetParent(ingredientPanel.transform);
+                newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientString = recipeSO.OptionalIngredients[i].gameObject.GetComponent<Item>().ingredientTypeString;
 
-            newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().sprite = recipeSO.OptionalIngredients[Random.Range(0, recipeSO.OptionalIngredients.Length)].gameObject.GetComponent<Item>().itemSprite;
-            newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+                newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().sprite = recipeSO.OptionalIngredients[i].gameObject.GetComponent<Item>().ingredientTypeSprite;
+                newIngredientSlot.GetComponent<CraftingItemSlot>().expectedIngredientImage.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
 
-            newIngredientsList.Add(newIngredientSlot);
+                newIngredientsList.Add(newIngredientSlot);
+                itemsMatching.Add(new bool());
+            }
         }
     }
 
@@ -70,6 +78,18 @@ public class CraftingUI : MonoBehaviour
         for (int i = 0; i < ingredientPanel.transform.childCount; i++) // destroys all previous expected ingredients
         {
             Destroy(ingredientPanel.transform.GetChild(i).gameObject);
+        }
+    }
+
+    public void CheckIfIngredientIsCorrect()
+    {
+        for (int i = 0; i < newIngredientsList.Count; i++)
+        {
+            if (newIngredientsList[i].gameObject.GetComponent<CraftingItemSlot>().expectedIngredientString == newIngredientsList[i].gameObject.transform.GetChild(0).GetComponent<Item>().ingredientTypeString)
+            {
+                itemsMatching[i] = true;
+                Debug.Log("item" + i + " is matching");
+            }
         }
     }
 

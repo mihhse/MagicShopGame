@@ -27,24 +27,21 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
     [SerializeField] private GameObject ItemImage;
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag != null)
+        if (eventData.pointerDrag.transform.childCount == 0 && eventData.pointerDrag != null)
         {
-            if (transform.GetChild(0).CompareTag("Expected Ingredient Image"))
-            {
-                GameObject dropped = eventData.pointerDrag; // item image
-                DragDrop dragDrop = dropped.GetComponent<DragDrop>(); // dropped image's drag drop component
+            GameObject dropped = eventData.pointerDrag; // item image
+            DragDrop dragDrop = dropped.GetComponent<DragDrop>(); // dropped image's drag drop component
 
-                dragDrop.parentAfterDrag = transform;
-                Debug.Log("Dropped");
-                eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+            dragDrop.parentAfterDrag = transform;
+            Debug.Log("Dropped");
+            eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-                if (dragDrop.ingredientTypeString.ToString() == expectedIngredientString)
+            if (dragDrop.ingredientTypeString.ToString() == expectedIngredientString)
                 {
                     recipeSO = dragDrop.recipeSO;
                     Debug.Log("Recipe inserted");
                     craftingUI.GetComponent<CraftingUI>().RecieveCraftingRecipe(recipeSO);
                 }
-            }
         }
     }
 

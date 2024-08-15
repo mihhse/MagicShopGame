@@ -18,3 +18,4 @@ MonoBehaviour:
   - {fileID: 4840310708482505166, guid: 38f81879dd309b64da91be9ac5fd391a, type: 3}
   - {fileID: 5758012576079955472, guid: 10424f1d94a0c114b92e7960b9e5792e, type: 3}
   OptionalIngredients: []
+  itemToCraft: {fileID: 9144310926785347679, guid: 418e0158f6c87924abfaef838b17fa03, type: 3}

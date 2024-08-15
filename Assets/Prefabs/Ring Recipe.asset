@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95d21c4c5726bd943aafa5349f428544, type: 3}
-  m_Name: DaggerRecipeLvl2
+  m_Name: Ring Recipe
   m_EditorClassIdentifier: 
-  recipeName: Dagger Recipe Level 2
+  recipeName: Ring Recipe
   numberOfIngredients: 2
   Ingredients:
-  - {fileID: 4840310708482505166, guid: 38f81879dd309b64da91be9ac5fd391a, type: 3}
   - {fileID: 5758012576079955472, guid: 10424f1d94a0c114b92e7960b9e5792e, type: 3}
-  OptionalIngredients:
   - {fileID: 6203261379275153665, guid: fa925d86ff3f2c04ba6376075b87bb4f, type: 3}
-  itemToCraft: {fileID: 9144310926785347679, guid: 418e0158f6c87924abfaef838b17fa03, type: 3}
+  OptionalIngredients: []
+  itemToCraft: {fileID: 1761597346497523241, guid: 4c830f3343f22ba4d93c3838457416ff, type: 3}

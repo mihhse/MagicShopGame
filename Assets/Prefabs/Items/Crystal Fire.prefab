@@ -94,6 +94,9 @@ MonoBehaviour:
   itemName: Fire Crystal
   itemSprite: {fileID: 21300000, guid: 880b4f1d1b4b634449aaf8100bf69956, type: 3}
   ingredientType: 3
+  ingredientTypeString: 
+  recipeSO: {fileID: 0}
+  ingredientTypeSprite: {fileID: 21300000, guid: 4abeb19fb13f3834b9d6d90011061dc6, type: 3}
 --- !u!65 &2634672856694299102
 BoxCollider:
   m_ObjectHideFlags: 0
