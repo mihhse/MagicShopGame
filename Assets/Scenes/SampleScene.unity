@@ -4405,6 +4405,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RecipeSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 6721993116254060835, guid: 460b239fc91fa1646a68dd23e210627f, type: 3}
+      propertyPath: m_TagString
+      value: Crafting Item Slot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -27,7 +27,11 @@ public class CraftingUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (transform.GetChild(0).gameObject.CompareTag("Expected Ingredient Image"))
+            ingredientPanel.SetActive(false);
+        else ingredientPanel.SetActive(true);
+
+            if (Input.GetButtonDown("Cancel"))
             craftingTable.GetComponent<CraftingTable>().CloseCraftingUI();
     }
 

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Item
   - Expected Ingredient Image
+  - Item Slot
+  - Crafting Item Slot
   layers:
   - Default
   - TransparentFX

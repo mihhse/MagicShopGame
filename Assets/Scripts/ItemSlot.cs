@@ -54,12 +54,31 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            GameObject dropped = eventData.pointerDrag; // item image
-            DragDrop dragDrop = dropped.GetComponent<DragDrop>(); // dropped image's drag drop component
+            if (eventData.pointerDrag.transform.CompareTag("Item Slot"))
+            {
+                if (!eventData.pointerDrag.GetComponent<ItemSlot>().isFull)
+                {
+                    GameObject dropped = eventData.pointerDrag; // item image
+                    DragDrop dragDrop = dropped.GetComponent<DragDrop>(); // dropped image's drag drop component
 
-            dragDrop.parentAfterDrag = transform;
-            Debug.Log("Dropped");
-            eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+                    dragDrop.parentAfterDrag = transform;
+                    Debug.Log("Dropped");
+                    eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+                }
+            }
+
+            if (eventData.pointerDrag.transform.CompareTag("Crafting Item Slot"))
+            {
+                if (!eventData.pointerDrag.GetComponent<CraftingItemSlot>().isFull)
+                {
+                    GameObject dropped = eventData.pointerDrag; // item image
+                    DragDrop dragDrop = dropped.GetComponent<DragDrop>(); // dropped image's drag drop component
+
+                    dragDrop.parentAfterDrag = transform;
+                    Debug.Log("Dropped");
+                    eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+                }
+            }
         }
     }
 

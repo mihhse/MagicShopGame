@@ -21,7 +21,7 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
     public ExpectedIngredient expectedIngredient = new ExpectedIngredient();
     public string expectedIngredientString;
 
-    [HideInInspector] public bool isFull;
+    public bool isFull;
 
     //REFERENCES
     [SerializeField] private GameObject ItemImage;
@@ -29,7 +29,9 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-                GameObject dropped = eventData.pointerDrag; // new image
+            if (transform.GetChild(0).CompareTag("Expected Ingredient Image"))
+            {
+                GameObject dropped = eventData.pointerDrag; // item image
                 DragDrop dragDrop = dropped.GetComponent<DragDrop>(); // dropped image's drag drop component
 
                 dragDrop.parentAfterDrag = transform;
@@ -42,6 +44,7 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
                     Debug.Log("Recipe inserted");
                     craftingUI.GetComponent<CraftingUI>().RecieveCraftingRecipe(recipeSO);
                 }
+            }
         }
     }
 
@@ -52,12 +55,15 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
     private void Update()
     {
         if (transform.childCount > 0) // if there is a child image - set the slot as full
+        {
+            if(!transform.GetChild(0).CompareTag("Expected Ingredient Image"))
             isFull = true;
+        }
         else isFull = false;
 
         if (isRecipeSlot) // if its a recipe slot
         {
-            if(!isFull) // if its not full
+            if (!isFull && transform.childCount < 1) // if its not full
             {
                 // add a new expected image to it
 
@@ -66,6 +72,7 @@ public class CraftingItemSlot : MonoBehaviour, IDropHandler
                 newIngredientImage.GetComponent<Image>().sprite = recipeSprite;
                 newIngredientImage.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
             }
+            else return;
         }
 
         if (transform.childCount > 1) // if there is more than 1 image delete the first one (expected image), else make a new one
